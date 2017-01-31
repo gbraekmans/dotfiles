@@ -15,6 +15,6 @@ nnoremap <buffer> <localleader>f :call flake8#Flake8()<CR>
 " Autocommands
 augroup filetype_python
 	autocmd!
-	autocmd BufWritePost * call flake8#Flake8()
-	autocmd BufRead,BufNewFile * match BadWhitespace /\s\+$/
+	autocmd FileType python BufWritePost * call flake8#Flake8()
+	autocmd FileType python BufRead,BufNewFile * match BadWhitespace /\s\+$/
 augroup END
