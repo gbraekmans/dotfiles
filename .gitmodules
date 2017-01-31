@@ -1,0 +1,36 @@
+[submodule "vim/bundle/vim-pathogen"]
+	path = vim/bundle/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen
+[submodule "vim/bundle/vim-sensible"]
+	path = vim/bundle/vim-sensible
+	url = https://github.com/tpope/vim-sensible
+[submodule "vim/bundle/vim-commentary"]
+	path = vim/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "vim/bundle/vim-surround"]
+	path = vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "vim/bundle/vim-unimpaired"]
+	path = vim/bundle/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired
+[submodule "vim/bundle/vim-flake8"]
+	path = vim/bundle/vim-flake8
+	url = https://github.com/nvie/vim-flake8
+[submodule "vim/bundle/SimpylFold"]
+	path = vim/bundle/SimpylFold
+	url = https://github.com/tmhedberg/SimpylFold
+[submodule "vim/bundle/vim-indent-object"]
+	path = vim/bundle/vim-indent-object
+	url = https://github.com/michaeljsmith/vim-indent-object
+[submodule "vim/bundle/vim-monokai"]
+	path = vim/bundle/vim-monokai
+	url = https://github.com/sickill/vim-monokai
+[submodule "vim/bundle/ctrlp.vim"]
+	path = vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim
+[submodule "vim/bundle/VimCompletesMe"]
+	path = vim/bundle/VimCompletesMe
+	url = https://github.com/ajh17/VimCompletesMe
+[submodule "vim/bundle/vim-buftabline"]
+	path = vim/bundle/vim-buftabline
+	url = https://github.com/ap/vim-buftabline

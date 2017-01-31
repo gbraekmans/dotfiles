@@ -1,0 +1,151 @@
+# If this is an xterminal, support 256-colors
+[[ "${TERM::5}" = "xterm" ]] && TERM=xterm-256color
+# Only do stuff if this is an interactive shell
+[[ -z "$PS1" ]] && return
+
+# Allow extended globs: delete everything but jpgs = rm !(*.jpg)
+shopt -s extglob
+# Enable recursive globs with **
+shopt -s globstar
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+# append to the history file, don't overwrite it
+shopt -s histappend
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# __last_bash_history_reload=$(date +%H%M)
+_reload_history() {
+	# Reload at most once every minute
+	# if [ "$(date +%H%M)" = "$__last_bash_history_reload" ]; then
+		history -a # Append history to file
+		history -c # Clear history
+		history -r # Reload history from file
+	#	__last_bash_history_reload="$(date +%H%M)"
+	# fi
+}
+# Reload on every prompt
+PROMPT_COMMAND="_reload_history;"
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+
+# Bash completion
+[[ -f /usr/share/bash-completion/bash_completion ]] && \
+	. /usr/share/bash-completion/bash_completion
+
+# Improve history searching
+# https://github.com/Bash-it/bash-it/blob/master/plugins/available/history.plugin.bash
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
+
+_build_prompt() {
+	local status=$?
+	# Set window title in X terminals
+	case ${TERM} in
+		[aEkx]term*|rxvt*|gnome*|konsole*|interix)
+			PS1='\[\033]0;\u@\h \w\007\]'
+			;;
+		screen*)
+			PS1='\[\033k\u@\h \w\033\\\]'
+			;;
+		*)
+			unset PS1
+			;;
+	esac
+
+	# Set virtualenv
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        # Use parent directory for venv name
+        # $HOME/code/python_project/.env => python_project
+        local envpath=${VIRTUAL_ENV%/*};
+        envpath=${envpath##*/};
+        # Trim if name is too long (>10)
+        if [[ ${#envpath} -ge 10 ]]; then
+            envpath="${envpath::9}…";
+        fi;
+        PS1+="\[\033[01;34m\][${envpath}] ";
+    fi;
+
+	# Set colored bash-prompt for user@host
+	# If root color prompt red, otherwise green
+    if [[ ${EUID} == 0 ]]; then
+        PS1+='\[\033[01;31m\]\u@\h ';
+    else
+        PS1+='\[\033[01;32m\]\u@\h ';
+    fi;
+
+    # Set PWD part of prompt. Build locally to use ellipsis
+    # Replace $HOME with ~
+    local path_prefix="";
+    local dir=$PWD;
+    if [[ $PWD =~ ^${HOME}.* ]]; then
+        path_prefix="~";
+        dir=${PWD##*$HOME};
+    fi;
+    # Only show latest directory
+    if [[ $dir =~ ..*/.* ]]; then
+        path_prefix+="/…/";
+        dir=${dir##*/};
+    fi;
+    PS1+="\[\033[01;36m\]${path_prefix}${dir}\[\033[00m\] ";
+
+    # Include the status of the last command
+	if [[ "$status" -eq 0 ]]; then
+		PS1+='\[\033[01;32m\]✔\[\033[00m\]'
+	else
+		PS1+="\[\033[01;31m\]${status}\[\033[00m\]"
+	fi
+	PS1+=' \$ '
+}
+PROMPT_COMMAND="_build_prompt; $PROMPT_COMMAND"
+_build_prompt
+
+# Use color versions of commands
+alias ls='ls --color=auto'
+alias grep='grep --colour=auto'
+alias egrep='egrep --colour=auto'
+alias fgrep='fgrep --colour=auto'
+
+# Set the correct editor
+for ed in vim vi nano pico; do
+	if command -v "$ed" > /dev/null; then
+		export EDITOR=$(command -v "$ed")
+		break
+	fi
+done
+
+# Custom completions
+for comp in ${HOME}/.bash_completions/*; do
+	. ${comp}
+done
+
+# PYTHON: Support user pip installs
+if [ -d $HOME/.local/bin ]; then
+	PATH+=":$HOME/.local/bin"
+fi
+
+# Already done in PROMPT_COMMAND->build_prompt
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+# RUBY: Support user gem installs
+if [ -d $HOME/.gem/ruby ]; then
+	for dir in $(ls $HOME/.gem/ruby); do
+		PATH=$PATH:$HOME/.gem/ruby/$dir/bin
+	done
+fi
+
+# HASKELL: Support user CABAL installs
+if [ -d $HOME/.cabal/bin ]; then
+	PATH+=":$HOME/.cabal/bin"
+fi
+
+# RUST: Support user cargo installs
+if [ -d $HOME/.cargo/bin ]; then
+	PATH+=":$HOME/.cargo/bin"
+fi

@@ -1,0 +1,44 @@
+set nocompatible                             " Not using vi
+
+" Leader mappings
+let maplocalleader = "L"                     " Map the localleader to L
+let mapleader = "\<space>"                   " Map the leader to space
+
+" Pathogen
+execute pathogen#infect()
+
+" Colors
+colorscheme monokai                          " Use a nice color scheme
+set cursorline                               " Highlight the current line
+set colorcolumn=80                           " Highlight column 80
+
+" Code display
+set number                                   " Line numbers
+set breakindent                              " Wrap lines with indentation
+set nofoldenable                             " Start folds expanded
+
+" Hard tabs
+set tabstop=2                                " 2 visual spaces per tab
+set shiftwidth=2                             " same for indent
+
+" Multiple file handling
+set confirm                                  " Ask for save instead of error
+set path=.,,**                               " inlcude all files in search
+
+" A better status line
+set statusline=%f\ %y%=Line:\ %l/%L\ \(%p%%\)\ Column:\ %02c
+
+" Set up CTRL p
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" Netrw
+let g:netrw_list_hide=netrw_gitignore#Hide() " Hide gitignore entries
+let g:netrw_list_hide.=',.git/$'             " Hide the .git directory
+
+" Custom mappings
+nnoremap <leader>f zizt
+nnoremap <leader><leader> zAzt
+nnoremap <leader>p :bprev<CR>
+nnoremap <leader>n :bnext<CR>
+nnoremap <leader>c :bdel<CR>
+nnoremap <leader>o :edit **/

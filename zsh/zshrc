@@ -1,0 +1,89 @@
+# Use colors
+autoload -Uz colors && colors
+
+# Use completion
+autoload -Uz compinit && compinit
+
+# Set Vi/Vim as editor
+if [ -x /usr/bin/vim ]; then
+	export EDITOR=vim
+else
+	export EDITOR=vi
+fi
+
+#
+# General
+#
+
+# Never beep
+setopt NO_BEEP
+
+# Use colors in output of most used commands
+alias ls='ls --color'
+alias grep='grep --color=auto'
+alias egrep='egrep --colour=auto'
+alias fgrep='fgrep --colour=auto'
+
+# Report statistics for every command taking over 2 seconds
+TIMEFMT="$fg[yellow]%J$reset_color time: $fg[blue]%*Es$reset_color, cpu: $fg[blue]%P$reset_color, mem: $fg[blue]%Mmb$reset_color"
+REPORTTIME=2
+
+#
+# History
+#
+
+# Don't save duplicates in history file
+setopt HIST_IGNORE_DUPS
+# Every shell has the same history file
+setopt SHARE_HISTORY
+# Don't store functions in the history file
+setopt HIST_NO_FUNCTIONS
+# Don't store history commands in the history file
+setopt HIST_NO_STORE
+# Don't store duplicate commands
+setopt HIST_SAVE_NO_DUPS
+
+# Set the history filesize large enough
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.history
+
+# Configure history to use the current prefix as filter
+autoload -Uz up-line-or-beginning-search
+autoload -Uz down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+zmodload zsh/terminfo
+# Bindkey, terminfo + fallback # https://github.com/zsh-users/zsh-history-substring-search/commit/c4a83561a12b898ff7145856d0e6ae50757e28ba
+bindkey "$terminfo[kcuu1]" up-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search
+bindkey "$terminfo[kcud1]" down-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
+
+#
+# Support user-installed gems
+#
+if [ -d $HOME/.gem/ruby ]; then
+  for dir in $(ls $HOME/.gem/ruby); do
+    PATH=$PATH:$HOME/.gem/ruby/$dir/bin
+  done
+fi
+
+#
+# Configure the prompt
+#
+
+# http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+
+# Use bright colors, display "user@host" in green for user, red for root
+PROMPT="%B%(!.%F{red}.%F{green})%n@%m%f" 
+# If nested more than two directories display ellipsis, than display last two
+# directories in blue
+PROMPT+=" %F{blue}%3(~:…/:)%2~%f"
+# Show the status of the last command, green for succes, red for failure
+PROMPT+=" %(?.%F{green}✔.%F{red}✖)%f%b"
+# Show the $ or # sign if user or root
+PROMPT+=" %(!.#.\$) "
+
+# Show the exit code of a failed command on the right
+RPROMPT="%(?..%B%F{red}[%?]%f%b)"
