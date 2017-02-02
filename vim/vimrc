@@ -84,8 +84,8 @@ nnoremap <leader>a :argadd **/
 nnoremap <leader>ww :w<CR>
 nnoremap <leader>wq :wq<CR>
 " Splits
-nnoremap <leader>s :split **/
-nnoremap <leader>v :vsplit **/
+nnoremap <leader>s :bprev<CR>:split<CR>:bnext<CR>
+nnoremap <leader>v :bprev<CR>:vsplit<CR>:bnext<CR>
 " Split movement
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
