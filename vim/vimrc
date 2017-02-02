@@ -91,6 +91,10 @@ nnoremap <leader>h <C-w>h
 nnoremap <leader>mm :make<CR>
 nnoremap <leader>mc :make clean<CR>
 nnoremap <leader>mt :make test<CR>
+" Git bindings
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gs :Gstatus<CR>
 
 " Insert mode escape by jj
 inoremap jj <ESC>
