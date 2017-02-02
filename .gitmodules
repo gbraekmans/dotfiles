@@ -19,9 +19,6 @@
 [submodule "vim/bundle/SimpylFold"]
 	path = vim/bundle/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold
-[submodule "vim/bundle/vim-indent-object"]
-	path = vim/bundle/vim-indent-object
-	url = https://github.com/michaeljsmith/vim-indent-object
 [submodule "vim/bundle/vim-monokai"]
 	path = vim/bundle/vim-monokai
 	url = https://github.com/sickill/vim-monokai
@@ -34,6 +31,3 @@
 [submodule "vim/bundle/vim-buftabline"]
 	path = vim/bundle/vim-buftabline
 	url = https://github.com/ap/vim-buftabline
-[submodule "vim/bundle/vim-python-pep8-indent"]
-	path = vim/bundle/vim-python-pep8-indent
-	url = git://github.com/Vimjas/vim-python-pep8-indent.git

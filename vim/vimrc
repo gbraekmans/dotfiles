@@ -14,6 +14,7 @@ set colorcolumn=80                           " Highlight column 80
 
 " Code display
 set number                                   " Line numbers
+set relativenumber                           " Relative numbers
 set breakindent                              " Wrap lines with indentation
 set nofoldenable                             " Start folds expanded
 
@@ -23,10 +24,38 @@ set shiftwidth=2                             " same for indent
 
 " Multiple file handling
 set confirm                                  " Ask for save instead of error
-set path=.,,**                               " inlcude all files in search
 
 " A better status line
 set statusline=%f\ %y%=Line:\ %l/%L\ \(%p%%\)\ Column:\ %02c
+
+" Set up splits
+set splitbelow
+set splitright
+
+" Ignore case while searching
+set ignorecase
+set smartcase
+
+" wildmenu ignores gitignore files
+if filereadable('.gitignore')
+    let igstring = ''
+    for oline in readfile('.gitignore')
+        let line = substitute(oline, '\s|\n|\r', '', "g")
+        if line =~ '^#' | con | endif
+        if line == '' | con  | endif
+        if line =~ '^!' | con  | endif
+        if line =~ '/$' | let igstring .= "," . line . "*" | con | endif
+        let igstring .= "," . line
+    endfor
+    let execstring = "set wildignore=".substitute(igstring, '^,', '', "g")
+    execute execstring
+endif
+
+" Use ag, the silver searcher, if it's installed on the system
+if executable("ag")
+	set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column
+	set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 
 " Set up CTRL p
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
@@ -36,9 +65,32 @@ let g:netrw_list_hide=netrw_gitignore#Hide() " Hide gitignore entries
 let g:netrw_list_hide.=',.git/$'             " Hide the .git directory
 
 " Custom mappings
-nnoremap <leader>f zizt
-nnoremap <leader><leader> zAzt
-nnoremap <leader>p :bprev<CR>
-nnoremap <leader>n :bnext<CR>
-nnoremap <leader>c :bdel<CR>
-nnoremap <leader>o :edit **/
+" Paste from the yank register
+nnoremap <leader>p "0p
+nnoremap <leader>P "0P
+" Find in project
+nnoremap <leader>f :grep 
+" Close buffer
+nnoremap <leader>d :bdel<CR> 
+" Edit file
+nnoremap <leader>e :edit **/
+" Add a bunch of files
+nnoremap <leader>a :argadd **/
+" Save a buffer
+nnoremap <leader>ww :w<CR>
+nnoremap <leader>wq :wq<CR>
+" Splits
+nnoremap <leader>s :split **/
+nnoremap <leader>v :vsplit **/
+" Split movement
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+nnoremap <leader>h <C-w>h
+" Make bindings
+nnoremap <leader>mm :make<CR>
+nnoremap <leader>mc :make clean<CR>
+nnoremap <leader>mt :make test<CR>
+
+" Insert mode escape by jj
+inoremap jj <ESC>
