@@ -25,6 +25,9 @@ set shiftwidth=2                             " same for indent
 " Multiple file handling
 set confirm                                  " Ask for save instead of error
 
+" Avoid the press enter to continue prompts
+set shortmess=aoOtI
+set cmdheight=2
 " A better status line
 set statusline=%f\ %y%=Line:\ %l/%L\ \(%p%%\)\ Column:\ %02c
 
@@ -55,10 +58,11 @@ endif
 if executable("ag")
 	set grepprg=ag\ --nogroup\ --nocolor\ --ignore-case\ --column
 	set grepformat=%f:%l:%c:%m,%f:%l:%m
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
 endif
-
-" Set up CTRL p
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Netrw
 let g:netrw_list_hide=netrw_gitignore#Hide() " Hide gitignore entries
@@ -69,7 +73,7 @@ let g:netrw_list_hide.=',.git/$'             " Hide the .git directory
 nnoremap <leader>p "0p
 nnoremap <leader>P "0P
 " Find in project
-nnoremap <leader>f :grep 
+nnoremap <leader>f :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Close buffer
 nnoremap <leader>d :bdel<CR> 
 " Edit file
@@ -95,6 +99,8 @@ nnoremap <leader>mt :make test<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
+" CtrlP mappings (o for open)
+let g:ctrlp_map='<leader>o'
 
 " Insert mode escape by jj
 inoremap jj <ESC>
