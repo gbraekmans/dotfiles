@@ -1,11 +1,14 @@
 set nocompatible                             " Not using vi
 
 " Leader mappings
-let maplocalleader = "L"                     " Map the localleader to L
+let maplocalleader = "\<tab>"                " Map the localleader to tab
 let mapleader = "\<space>"                   " Map the leader to space
 
 " Pathogen
 execute pathogen#infect()
+
+" Keep me informed of what I typed
+set showcmd
 
 " Colors
 colorscheme monokai                          " Use a nice color scheme
@@ -76,21 +79,19 @@ nnoremap <leader>P "0P
 nnoremap <leader>f :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Close buffer
 nnoremap <leader>d :bdel<CR> 
+nnoremap <leader>D <C-w>q
 " Edit file
 nnoremap <leader>e :edit **/
 " Add a bunch of files
 nnoremap <leader>a :argadd **/
 " Save a buffer
-nnoremap <leader>ww :w<CR>
-nnoremap <leader>wq :wq<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>W :wq<CR>
 " Splits
 nnoremap <leader>s :bprev<CR>:split<CR>:bnext<CR>
 nnoremap <leader>v :bprev<CR>:vsplit<CR>:bnext<CR>
-" Split movement
-nnoremap <leader>j <C-w>j
-nnoremap <leader>k <C-w>k
-nnoremap <leader>l <C-w>l
-nnoremap <leader>h <C-w>h
+" Split movement toggle
+nnoremap <leader><leader> <C-w>w
 " Make bindings
 nnoremap <leader>mm :make<CR>
 nnoremap <leader>mc :make clean<CR>

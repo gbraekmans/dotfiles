@@ -22,9 +22,6 @@
 [submodule "vim/bundle/vim-monokai"]
 	path = vim/bundle/vim-monokai
 	url = https://github.com/sickill/vim-monokai
-[submodule "vim/bundle/VimCompletesMe"]
-	path = vim/bundle/VimCompletesMe
-	url = https://github.com/ajh17/VimCompletesMe
 [submodule "vim/bundle/vim-buftabline"]
 	path = vim/bundle/vim-buftabline
 	url = https://github.com/ap/vim-buftabline
