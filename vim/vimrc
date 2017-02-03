@@ -42,9 +42,6 @@ set splitright
 set ignorecase
 set smartcase
 
-" Configure spelling
-set complete+=kspell
-
 " wildmenu ignores gitignore files
 if filereadable('.gitignore')
     let igstring = ''
