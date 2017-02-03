@@ -31,12 +31,14 @@ set confirm                                  " Ask for save instead of error
 " Avoid the press enter to continue prompts
 set shortmess=aoOtI
 set cmdheight=2
-" A better status line
-set statusline=%f\ %y%=Line:\ %l/%L\ \(%p%%\)\ Column:\ %02c
 
 " Set up splits
 set splitbelow
 set splitright
+
+" A better status line
+set statusline=%f\ %{fugitive#statusline()}\ %y%=
+set statusline+=Line:\ %l/%L\ \(%p%%\)\ Column:\ %02c
 
 " Ignore case while searching
 set ignorecase
@@ -78,8 +80,8 @@ nnoremap <leader>P "0P
 " Find current word under cursor in project
 nnoremap <leader>f :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Close buffer/split
-nnoremap <leader>d <C-w>q
-nnoremap <leader>D :bdel<CR> 
+nnoremap <leader>d :bdel<CR> 
+nnoremap <leader>D <C-w>q
 " Edit file
 nnoremap <leader>e :edit **/
 " Add a bunch of files
@@ -89,7 +91,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>W :wq<CR>
 " Splits
 nnoremap <leader>s :bprev<CR>:split<CR>:bnext<CR>
-nnoremap <leader>v :bprev<CR>:vsplit<CR>:bnext<CR>
+nnoremap <leader>v :bprev<CR>:vertical split<CR>:bnext<CR>
 " Split movement toggle
 nnoremap <leader><leader> <C-w>w
 " Make bindings
@@ -100,10 +102,13 @@ nnoremap <leader>mt :make test<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gl :Glog<CR>:cw<CR>
+nnoremap <leader>ga :Git add .<CR><CR>
+nnoremap <leader>gp :Gpush<CR>
 " CtrlP mappings (o for open)
 let g:ctrlp_map='<leader>o'
 " Prevent the command line window from popping up
-nnoremap q: :q
+nmap q: :q
 
 " Insert mode escape by jj
 inoremap jj <ESC>
