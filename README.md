@@ -4,7 +4,7 @@
 
 - bashrc
 - zshrc
-- vimrc & vim config
+- vimrc & vim configuration
 
 ## Usage
 

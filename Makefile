@@ -30,6 +30,8 @@ vim:
 	ln -sfn $(DIR)/vim/autoload ${HOME}/.vim/autoload
 	ln -sfn $(DIR)/vim/bundle ${HOME}/.vim/bundle
 	ln -sfn $(DIR)/vim/ftplugin ${HOME}/.vim/ftplugin
+	ln -sfn $(DIR)/vim/spell ${HOME}/.vim/spell
+	vim -es -c ':mkspell! %' -c ':q' ${HOME}/.vim/spell/en.utf-8.add || true
 
 tmux:
 	ln -sf $(DIR)/tmux/tmux.conf ${HOME}/.tmux.conf

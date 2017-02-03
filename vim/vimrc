@@ -42,6 +42,9 @@ set splitright
 set ignorecase
 set smartcase
 
+" Configure spelling
+set complete+=kspell
+
 " wildmenu ignores gitignore files
 if filereadable('.gitignore')
     let igstring = ''
@@ -75,11 +78,11 @@ let g:netrw_list_hide.=',.git/$'             " Hide the .git directory
 " Paste from the yank register
 nnoremap <leader>p "0p
 nnoremap <leader>P "0P
-" Find in project
+" Find current word under cursor in project
 nnoremap <leader>f :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-" Close buffer
-nnoremap <leader>d :bdel<CR> 
-nnoremap <leader>D <C-w>q
+" Close buffer/split
+nnoremap <leader>d <C-w>q
+nnoremap <leader>D :bdel<CR> 
 " Edit file
 nnoremap <leader>e :edit **/
 " Add a bunch of files
