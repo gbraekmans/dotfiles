@@ -102,6 +102,8 @@ nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gs :Gstatus<CR>
 " CtrlP mappings (o for open)
 let g:ctrlp_map='<leader>o'
+" Prevent the command line window from popping up
+nnoremap q: :q
 
 " Insert mode escape by jj
 inoremap jj <ESC>
