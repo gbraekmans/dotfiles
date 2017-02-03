@@ -14,11 +14,11 @@ setlocal textwidth=79
 " Mappings
 nnoremap <buffer> <localleader>f :call flake8#Flake8()<CR>
 " Find the previously defined class
-nnoremap <buffer> <localleader>c ?^\s*class ?e+1<CR>
-nnoremap <buffer> <localleader>C /^\s*class /e+1<CR>
+nnoremap <buffer> <localleader>c /^\s*class /e+1<CR>
+nnoremap <buffer> <localleader>C ?^\s*class ?e+1<CR>
 " Find the previously defined function
-nnoremap <buffer> <localleader>d ?^\s*def ?e+1<CR>
-nnoremap <buffer> <localleader>D /^\s*def /e+1<CR>
+nnoremap <buffer> <localleader>d /^\s*def /e+1<CR>
+nnoremap <buffer> <localleader>D ?^\s*def ?e+1<CR>
 
 " Autocommands
 autocmd BufWritePost <buffer> call flake8#Flake8()
