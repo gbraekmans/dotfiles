@@ -11,7 +11,7 @@ execute pathogen#infect()
 set showcmd
 
 " Colors
-colorscheme monokai                          " Use a nice color scheme
+colorscheme badwolf                          " Use a nice color scheme
 set cursorline                               " Highlight the current line
 set colorcolumn=80                           " Highlight column 80
 
