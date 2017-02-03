@@ -31,7 +31,8 @@ vim:
 	ln -sfn $(DIR)/vim/bundle ${HOME}/.vim/bundle
 	ln -sfn $(DIR)/vim/ftplugin ${HOME}/.vim/ftplugin
 	ln -sfn $(DIR)/vim/spell ${HOME}/.vim/spell
-	vim -es -c ':mkspell! %' -c ':q' ${HOME}/.vim/spell/en.utf-8.add || true
+	vim -c ":e ${HOME}/.vim/spell/en.utf-8.add" -c ':silent mkspell! %' -c ':q'
+	vim -c ':Helptags' -c ':q'
 
 tmux:
 	ln -sf $(DIR)/tmux/tmux.conf ${HOME}/.tmux.conf
