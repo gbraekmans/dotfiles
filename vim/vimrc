@@ -81,9 +81,7 @@ nnoremap <leader>P "0P
 nnoremap <leader>f :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Close buffer/split
 nnoremap <leader>d :bdel<CR> 
-nnoremap <leader>D <C-w>q
-" Edit file
-nnoremap <leader>e :edit **/
+nnoremap <leader>D :q!<CR>
 " Add a bunch of files
 nnoremap <leader>a :argadd **/
 " Save a buffer
@@ -94,6 +92,8 @@ nnoremap <leader>s :bprev<CR>:split<CR>:bnext<CR>
 nnoremap <leader>v :bprev<CR>:vertical split<CR>:bnext<CR>
 " Split movement toggle
 nnoremap <leader><leader> <C-w>w
+" Make this split the only window
+nnoremap <leader>o :only<CR>
 " Make bindings
 nnoremap <leader>mm :make<CR>
 nnoremap <leader>mc :make clean<CR>
@@ -105,8 +105,8 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gl :Glog<CR>:cw<CR>
 nnoremap <leader>ga :Git add .<CR><CR>
 nnoremap <leader>gp :Gpush<CR>
-" CtrlP mappings (o for open)
-let g:ctrlp_map='<leader>o'
+" CtrlP mappings
+let g:ctrlp_map='<leader>e'
 " Prevent the command line window from popping up
 nmap q: :q
 
