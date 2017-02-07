@@ -40,6 +40,10 @@ set splitright
 set statusline=%f\ %{fugitive#statusline()}\ %y%=
 set statusline+=Line:\ %l/%L\ \(%p%%\)\ Column:\ %02c
 
+" Show invisibles
+set listchars=trail:·,tab:»·
+set list
+
 " Ignore case while searching
 set ignorecase
 set smartcase
