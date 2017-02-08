@@ -79,7 +79,8 @@ let g:netrw_list_hide.=',.git/$'             " Hide the .git directory
 
 " Gui options
 if (has('gui_running'))
-	set guioptions=
+	set guioptions=c
+	set guifont=DejaVu\ Sans\ Mono\ 10
 	if executable("wmctrl")
 		noremap <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
 	endif
