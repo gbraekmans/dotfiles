@@ -77,6 +77,13 @@ endif
 let g:netrw_list_hide=netrw_gitignore#Hide() " Hide gitignore entries
 let g:netrw_list_hide.=',.git/$'             " Hide the .git directory
 
+" Gui options
+if (has('gui_running'))
+	set guioptions=
+	if executable("wmctrl")
+		noremap <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
+	endif
+endif
 " Custom mappings
 " Paste from the yank register
 nnoremap <leader>p "0p
