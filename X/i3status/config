@@ -1,0 +1,70 @@
+general {
+	output_format = "i3bar"
+	colors = true
+	interval = 1
+
+	# badwolf lime
+	color_good = "#aeee00"
+
+	# badwolf taffy
+	color_bad = "#ff2c4b"
+
+	# badwolf orange
+	color_degraded = "#ffa724"
+}
+
+order += "cpu_usage"
+order += "disk /"
+order += "ethernet eth0"
+order += "wireless wlan0"
+order += "volume master"
+order += "tztime local"
+
+tztime local {
+	format = "%H:%M %d-%b-%y"
+	}
+
+volume master {
+	format = "♪: %volume"
+	format_muted = "♪: muted (%volume)"
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
+}
+
+run_watch DHCP {
+	pidfile = "/var/run/dhclient*.pid"
+}
+
+wireless wlan0 {
+	format_up = "W: %ip (%essid, %quality)"
+	format_down = "W: down"
+}
+
+ethernet eth0 {
+	# if you use %speed, i3status requires the cap_net_admin capability
+	format_up = "E: %ip"
+	format_down = "E: down"
+}
+
+battery 0 {
+	format = "%status %percentage %remaining %emptytime"
+	format_down = "No battery"
+	status_chr = "⚡ CHR"
+	status_bat = "🔋 BAT"
+	status_full = "🔋 FULL"
+	path = "/sys/class/power_supply/BAT%d/uevent"
+	low_threshold = 15
+}
+
+cpu_usage {
+	format = "CPU: %usage%%"
+}
+
+load {
+	format = "LOAD %1min %5min %15min"
+}
+
+disk "/" {
+	format = "PART /: %percentage_used"
+}

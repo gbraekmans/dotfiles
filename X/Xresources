@@ -1,0 +1,51 @@
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintfull
+
+
+URxvt.scrollBar: false
+URxvt.transparent: false
+
+URxvt.depth: 32
+URxvt.fading: 0
+URxvt.loginShell: true
+URxvt.saveLines: 20000
+URxvt.internalBorder: 3
+URxvt.lineSpace: 0
+
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
+URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
+! URxvt.letterSpace: -1
+
+! Badwolf theme
+! Badwolf blackestgravel
+URxvt*background: #141413
+! Badwolf plain
+URxvt*foreground: #c8c8c8
+
+!black, badwolf blackgravel
+URxvt*color0:  #1c1b1a
+URxvt*color8:  #1c1b1a
+!red, badwolf taffy
+URxvt*color1:  #ff2c4b
+URxvt*color9:  #ff2c4b
+!green, badwolf lime
+URxvt*color2:  #aeee00
+URxvt*color10: #aeee00
+!yellow, badwolf dalespale
+URxvt*color3:  #fade3e
+URxvt*color11: #fade3e
+!blue, badwolf tardis
+URxvt*color4:  #0a9dff
+URxvt*color12: #0a9dff
+!magenta, badwolf dress
+URxvt*color5:  #ff9eb8
+URxvt*color13: #ff9eb8
+!cyan, badwolf saltwatertaffy
+URxvt*color6:  #8cffba
+URxvt*color14: #8cffba
+!white, badwolf snow
+URxvt*color7:  #ffffff
+URxvt*color15: #ffffff

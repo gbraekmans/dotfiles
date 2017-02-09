@@ -1,6 +1,6 @@
 DIR :=$(shell pwd)
 
-.PHONY: install help apt_install bash zsh vim tmux update
+.PHONY: install help apt_install bash zsh vim tmux X update
 
 install: bash tmux
 
@@ -12,6 +12,7 @@ help:
 	@echo "  zsh                    install a symlink to this zshrc"
 	@echo "  vim                    install a symlink to this vim configuration"
 	@echo "  tmux                   install a symlink to this tmux configuration"
+	@echo "  X                      install a symlink to this X/i3 configuration"
 	@echo "  update                 update all external sources"
 
 apt_install:
@@ -36,6 +37,13 @@ vim:
 
 tmux:
 	ln -sf $(DIR)/tmux/tmux.conf ${HOME}/.tmux.conf
+
+X:
+	mkdir -p ${HOME}/.config
+	ln -sf $(DIR)/X/Xresources ${HOME}/.Xresources
+	ln -sfn $(DIR)/X/i3 ${HOME}/.config/i3
+	ln -sfn $(DIR)/X/i3status ${HOME}/.config/i3status
+	convert X/wallpapers/freebsd_orb_badwolf.svg ${HOME}/.wallpaper.png
 
 update:
 	mkdir -p vim/bundle
