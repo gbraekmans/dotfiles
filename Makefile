@@ -43,7 +43,7 @@ X:
 	ln -sf $(DIR)/X/Xresources ${HOME}/.Xresources
 	ln -sfn $(DIR)/X/i3 ${HOME}/.config/i3
 	ln -sfn $(DIR)/X/i3status ${HOME}/.config/i3status
-	convert X/wallpapers/freebsd_orb_badwolf.svg ${HOME}/.wallpaper.png
+	convert X/wallpapers/gentoo_logo_badwolf.svg ${HOME}/.wallpaper.png
 
 update:
 	mkdir -p vim/bundle
