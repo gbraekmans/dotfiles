@@ -63,16 +63,16 @@ zstyle ':vcs_info:*' formats "%b"
 setopt prompt_subst
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 # Show the current virtualenv on the right, prepend by space if set
-PROMPT='%B%F{yellow}${VIRTUAL_ENV_NAME}%f%b${VIRTUAL_ENV_NAME:+ }'
+PROMPT='%F{yellow}${VIRTUAL_ENV_NAME}%f${VIRTUAL_ENV_NAME:+ }'
 # Use bold, bright colors. Display "user@host" in green for user, red for root
-PROMPT+='%B%(!.%F{red}.%F{green})%n@%m%f'
+PROMPT+='%(!.%F{red}.%F{blue})%n@%m%f'
 # If nested more than two directories display ellipsis, than display last two
 # directories in cyan
-PROMPT+=' %F{blue}%3(~:…/:)%2~%f'
+PROMPT+=' %F{cyan}%3(~:…/:)%2~%f'
 # Show the current vcs info on the right, prepend by space if set
-PROMPT+='${vcs_info_msg_0_:+ }%B%F{magenta}${vcs_info_msg_0_}%f%b'
+PROMPT+='${vcs_info_msg_0_:+ }%F{magenta}${vcs_info_msg_0_}%f'
 # Show the status of the last command, green for succes, red for failure
-PROMPT+=' %(?.%F{green}✔.%F{red}✖)%f%b'
+PROMPT+=' %(?.%F{green}✔.%F{red}✖)%f'
 # Show the $ or # sign if user or root
 PROMPT+=' %(!.#.\$) '
 
