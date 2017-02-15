@@ -59,34 +59,40 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $WS1 "1. Terminal"
-set $WS2 "2. Web"
-set $WS3 "3. Main"
-set $WS4 "4. Graphics"
+set $WS1 "1. Main"
+set $WS2 "2. Terminal"
+set $WS3 "3. Web"
+set $WS4 "4. Files"
+set $WS5 "5. Graphics"
+set $WS6 "6. Misc"
+set $WS7 "7. Misc"
+set $WS8 "8. Misc"
+set $WS9 "9. Misc"
+set $WS10 "10. Misc"
 
 # switch to workspace
 bindsym $mod+1 workspace $WS1
 bindsym $mod+2 workspace $WS2
 bindsym $mod+3 workspace $WS3
 bindsym $mod+4 workspace $WS4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+5 workspace $WS5
+bindsym $mod+6 workspace $WS6
+bindsym $mod+7 workspace $WS7
+bindsym $mod+8 workspace $WS8
+bindsym $mod+9 workspace $WS9
+bindsym $mod+0 workspace $WS10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $WS1; workspace $WS1
 bindsym $mod+Shift+2 move container to workspace $WS2; workspace $WS2
 bindsym $mod+Shift+3 move container to workspace $WS3; workspace $WS3
 bindsym $mod+Shift+4 move container to workspace $WS4; workspace $WS4
-bindsym $mod+Shift+5 move container to workspace 5; workspace 5
-bindsym $mod+Shift+6 move container to workspace 6; workspace 6
-bindsym $mod+Shift+7 move container to workspace 7; workspace 7
-bindsym $mod+Shift+8 move container to workspace 8; workspace 8
-bindsym $mod+Shift+9 move container to workspace 9; workspace 9
-bindsym $mod+Shift+0 move container to workspace 10; workspace 10
+bindsym $mod+Shift+5 move container to workspace $WS5; workspace $WS5
+bindsym $mod+Shift+6 move container to workspace $WS6; workspace $WS6
+bindsym $mod+Shift+7 move container to workspace $WS7; workspace $WS7
+bindsym $mod+Shift+8 move container to workspace $WS8; workspace $WS8
+bindsym $mod+Shift+9 move container to workspace $WS9; workspace $WS9
+bindsym $mod+Shift+0 move container to workspace $WS10; workspace $WS10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -156,8 +162,14 @@ client.unfocused        $gravel $gravel $blackestgravel $gravel    $gravel
 # Dont' show a border for terminals
 for_window [class=".*"] border pixel 1
 
-# Autostart terminal and browser
-exec --no-startup-id i3-msg 'workspace $WS1; exec urxvt; workspace $WS3'
-exec --no-startup-id i3-msg 'workspace $WS2; exec firefox; workspace $WS3'
+# Workspace assignments
+assign [window_role="^browser$"] $WS3
+assign [class="^URxvt$"] $WS2
+assign [class="^Gimp$"] $WS5
+assign [class="^Inkscape$"] $WS5
+assign [class="^Pcmanfm$"] $WS4
+assign [class=".*"] $WS3
+
+for_window [class=".*"] focus
 
 exec_always --no-startup-id feh --bg-scale $HOME/.wallpaper.png
