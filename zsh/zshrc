@@ -1,6 +1,8 @@
 #
 # General
 #
+# If this is an xterminal, support 256-colors
+[[ "${TERM:0:5}" = "xterm" ]] && TERM=xterm-256color
 # Use colors
 autoload -Uz colors && colors
 # Use completion
