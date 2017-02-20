@@ -15,6 +15,26 @@ help:
 	@echo "  X                      install a symlink to this X/i3 configuration"
 	@echo "  update                 update all external sources"
 
+bsd:
+	echo "zsh"
+	ln -sf $(.CURDIR)/zsh/zshrc ${HOME}/.zshrc
+	echo "vim"
+	ln -sf $(.CURDIR)/vim/vimrc ${HOME}/.vimrc
+	mkdir -p ${HOME}/.vim
+	ln -sF $(.CURDIR)/vim/autoload ${HOME}/.vim/autoload
+	ln -sF $(.CURDIR)/vim/bundle ${HOME}/.vim/bundle
+	ln -sF $(.CURDIR)/vim/ftplugin ${HOME}/.vim/ftplugin
+	ln -sF $(.CURDIR)/vim/spell ${HOME}/.vim/spell
+	vim -c ":e ${HOME}/.vim/spell/en.utf-8.add" -c ':silent mkspell! %' -c ':q'
+	vim -c ':Helptags' -c ':q'
+	mkdir -p ${HOME}/.config
+	ln -sf $(.CURDIR)/X/Xresources ${HOME}/.Xresources
+	ln -sF $(.CURDIR)/X/i3 ${HOME}/.i3
+	ln -sF $(.CURDIR)/X/i3status ${HOME}/.i3status
+	convert X/wallpapers/freebsd_orb_badwolf.svg ${HOME}/.wallpaper.png
+
+
+
 apt_install:
 	DEBIAN_FRONTEND=noninteractive apt-get -yq install bash tmux
 
