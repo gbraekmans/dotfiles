@@ -26,7 +26,7 @@ nnoremap <buffer> <localleader>C ?^\s*class ?e+1<CR>
 nnoremap <buffer> <localleader>d /^\s*def /e+1<CR>
 nnoremap <buffer> <localleader>D ?^\s*def ?e+1<CR>
 
-" Autocommands
-autocmd BufWritePost <buffer> call TrimWhitespace()
-autocmd BufWritePre <buffer> call flake8#Flake8()
-autocmd BufRead,BufNewFile <buffer> match BadWhitespace /\s\+$/
+" " Autocommands
+" autocmd BufWritePost <buffer> call TrimWhitespace()
+" autocmd BufWritePre <buffer> call flake8#Flake8()
+" autocmd BufRead,BufNewFile <buffer> match BadWhitespace /\s\+$/

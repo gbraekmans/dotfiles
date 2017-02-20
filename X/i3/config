@@ -60,11 +60,11 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 set $WS1 "1. Main"
-set $WS2 "2. Terminal"
-set $WS3 "3. Web"
-set $WS4 "4. Files"
-set $WS5 "5. Graphics"
-set $WS6 "6. Misc"
+set $WS2 "2. Web"
+set $WS3 "3. Terminal"
+set $WS4 "4. Editor"
+set $WS5 "5. Files"
+set $WS6 "6. Graphics"
 set $WS7 "7. Misc"
 set $WS8 "8. Misc"
 set $WS9 "9. Misc"
@@ -163,12 +163,19 @@ client.unfocused        $gravel $gravel $blackestgravel $gravel    $gravel
 for_window [class=".*"] border pixel 1
 
 # Workspace assignments
-assign [window_role="^browser$"] $WS3
-assign [class="^URxvt$"] $WS2
-assign [class="^Gimp$"] $WS5
-assign [class="^Inkscape$"] $WS5
-assign [class="^Pcmanfm$"] $WS4
-assign [class=".*"] $WS3
+assign [window_role="^browser$"] $WS2
+
+assign [class="^URxvt$"] $WS3
+
+assign [class="^Gvim$"] $WS4
+
+assign [class="^Pcmanfm$"] $WS5
+
+assign [class="^Gimp$"] $WS6
+assign [class="^Inkscape$"] $WS6
+
+# Last catch all
+assign [class=".*"] $WS1
 
 for_window [class=".*"] focus
 
