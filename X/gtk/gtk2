@@ -1,3 +1,8 @@
 gtk-icon-theme-name = "Adwaita"
 gtk-theme-name = "TraditionalOk"
 gtk-font-name = "DejaVu Sans 10"
+
+style "vimfix" {
+  bg[NORMAL] = "#1c1b1a" # this matches my gvim theme 'Normal' bg color.
+}
+widget "vim-main-window.*GtkForm" style "vimfix"

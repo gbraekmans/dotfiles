@@ -87,19 +87,12 @@ if (has('gui_running'))
 	endif
 endif
 " Custom mappings
-" Paste from the yank register
-nnoremap <leader>p "0p
-nnoremap <leader>P "0P
 " Find current word under cursor in project
 nnoremap <leader>f :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Close buffer/split
 nnoremap <leader>d :bdel<CR> 
-nnoremap <leader>D :q!<CR>
 " Add a bunch of files
 nnoremap <leader>a :argadd **/
-" Save a buffer
-nnoremap <leader>w :w<CR>
-nnoremap <leader>W :wq<CR>
 " Splits
 nnoremap <leader>s :bprev<CR>:split<CR>:bnext<CR>
 nnoremap <leader>v :bprev<CR>:vertical split<CR>:bnext<CR>
@@ -118,6 +111,9 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gl :Glog<CR>:cw<CR>
 nnoremap <leader>ga :Git add .<CR><CR>
 nnoremap <leader>gp :Gpush<CR>
+" Open the projects folder
+nnoremap <leader>p :CtrlpProject<CR>
+
 " CtrlP mappings
 let g:ctrlp_map='<leader>e'
 " Prevent the command line window from popping up

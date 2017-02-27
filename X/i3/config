@@ -150,10 +150,10 @@ bar {
         active_workspace   $tardis  $tardis      $blackestgravel
         inactive_workspace $gravel  $gravel      $blackestgravel
         urgent_workspace   $gravel  $gravel      $blackestgravel
-        binding_mode       $lime    $lime        $blackestgravel
+        # binding_mode       $lime    $lime        $blackestgravel
     }
     status_command i3status
-
+    font pango:DejaVu Sans Mono 10
 }
 
 # Set the default border to something better

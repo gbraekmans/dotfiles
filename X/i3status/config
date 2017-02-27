@@ -13,20 +13,16 @@ general {
 	color_degraded = "#ffa724"
 }
 
-order += "cpu_usage"
-order += "disk /"
-order += "ethernet eth0"
-order += "wireless wlan0"
 order += "volume master"
 order += "tztime local"
 
 tztime local {
-	format = "%H:%M %d-%b-%y"
+	format = "%d-%b-%y %H:%M"
 	}
 
 volume master {
 	format = "♪: %volume"
-	format_muted = "♪: muted (%volume)"
+	format_muted = "♪: muted"
 	device = "default"
 	mixer = "Master"
 	mixer_idx = 0
