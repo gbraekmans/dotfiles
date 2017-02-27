@@ -60,6 +60,9 @@ tmux:
 
 X:
 	mkdir -p ${HOME}/.config
+	ln -sf $(DIR)/X/gtk/gtk2 ${HOME}/.gtkrc-2.0
+	mkdir -p ${HOME}/.config/gtk-3.0
+	ln -sf $(DIR)/X/gtk/gtk3 ${HOME}/.config/gtk-3.0/settings.ini
 	ln -sf $(DIR)/X/Xresources ${HOME}/.Xresources
 	ln -sfn $(DIR)/X/i3 ${HOME}/.config/i3
 	ln -sfn $(DIR)/X/i3status ${HOME}/.config/i3status
