@@ -87,6 +87,8 @@ if (has('gui_running'))
 	endif
 endif
 " Custom mappings
+" Shortcut for saving
+nnoremap <leader>w :w<CR>
 " Find current word under cursor in project
 nnoremap <leader>f :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Close buffer/split
@@ -113,6 +115,8 @@ nnoremap <leader>ga :Git add .<CR><CR>
 nnoremap <leader>gp :Gpush<CR>
 " Open the projects folder
 nnoremap <leader>p :CtrlpProject<CR>
+" Open the buffer list
+nnoremap <leader>b :CtrlPBuffer<CR>
 
 " CtrlP mappings
 let g:ctrlp_map='<leader>e'
