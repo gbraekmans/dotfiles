@@ -31,6 +31,7 @@ endfunction
 function! ctrlp#project#accept(mode, str)
  	call ctrlp#exit()
 	exe "cd" g:ctrlp_project_root . '/' .  a:str
+	edit README*
 endfunction
 
 " Give the extension an ID
