@@ -13,6 +13,7 @@ general {
 	color_degraded = "#ffa724"
 }
 
+order += "cpu_usage"
 order += "volume master"
 order += "tztime local"
 

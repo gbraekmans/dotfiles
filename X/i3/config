@@ -11,18 +11,21 @@ font pango:DejaVu Sans Mono 10
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec urxvt
-
 # kill focused window
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+# bindsym $mod+Return exec dmenu_run
+bindsym $mod+Return exec --no-startup-id j4-dmenu-desktop --term="urxvt" --dmenu="dmenu -i -fn 'DejaVu Sans Mono-10' -nb '$blackestgravel' -nf '$plain' -sb '$taffy' -sf '$blackestgravel'"
+
+# Start terminal
+bindsym $mod+t exec urxvt
+# Start editor
+bindsym $mod+e exec gvim
+# Start browser
+bindsym $mod+b exec firefox
+# Start filemanager
+bindsym $mod+f exec pcmanfm
 
 # change focus
 bindsym $mod+h focus left
@@ -43,7 +46,7 @@ bindsym $mod+s split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen
+bindsym $mod+Shift+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking
@@ -104,7 +107,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i
 bindsym $mod+Shift+p exec "i3-nagbar -t warning -m 'Do you really want to power off the computer.' -b 'Yes, power off' 'systemctl poweroff'"
 
 # resize window (you can also use the mouse for that)
-mode "resize" {
+mode "Resize" {
         # These bindings trigger as soon as you enter the resize mode
 
         bindsym h resize shrink width 10 px or 10 ppt
@@ -122,7 +125,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode "Resize"
 
 # Switch to next workspace
 bindsym $mod+space workspace next
@@ -150,7 +153,7 @@ bar {
         active_workspace   $tardis  $tardis      $blackestgravel
         inactive_workspace $gravel  $gravel      $blackestgravel
         urgent_workspace   $gravel  $gravel      $blackestgravel
-        # binding_mode       $lime    $lime        $blackestgravel
+        binding_mode       $taffy   $taffy       $blackestgravel
     }
     status_command i3status
     font pango:DejaVu Sans Mono 10
@@ -170,7 +173,7 @@ client.unfocused        $gravel $gravel $blackestgravel $gravel    $gravel
 for_window [class=".*"] border pixel 1
 
 # Workspace assignments
-assign [window_role="^browser$"] $WS2
+assign [class="^Firefox$"] $WS2
 
 assign [class="^URxvt$"] $WS3
 
@@ -178,7 +181,7 @@ assign [class="^Gvim$"] $WS4
 
 assign [class="^Pcmanfm$"] $WS5
 
-assign [class="^Gimp$"] $WS6
+assign [class="^Gimp"] $WS6
 assign [class="^Inkscape$"] $WS6
 
 # Last catch all
