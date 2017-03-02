@@ -1,3 +1,4 @@
+IMAGE_MAGICK=convert
 DIR :=$(shell pwd)
 
 .PHONY: install help apt_install bash zsh vim tmux X update
@@ -31,7 +32,7 @@ bsd:
 	ln -sf $(.CURDIR)/X/Xresources ${HOME}/.Xresources
 	ln -sF $(.CURDIR)/X/i3 ${HOME}/.i3
 	ln -sF $(.CURDIR)/X/i3status ${HOME}/.i3status
-	convert X/wallpapers/freebsd_orb_badwolf.svg ${HOME}/.wallpaper.png
+	$(IMAGE_MAGICK) X/wallpapers/freebsd_orb_badwolf.svg ${HOME}/.wallpaper.png
 
 
 
@@ -68,13 +69,13 @@ X:
 	ln -sfn $(DIR)/X/i3status ${HOME}/.config/i3status
 
 debian_wallpaper:
-	convert X/wallpapers/debian_swirl_badwolf.svg ${HOME}/.wallpaper.png
+	$(IMAGE_MAGICK) X/wallpapers/debian_swirl_badwolf.svg ${HOME}/.wallpaper.png
 
 freebsd_wallpaper:
-	convert X/wallpapers/debian_swirl_badwolf.svg ${HOME}/.wallpaper.png
+	$(IMAGE_MAGICK) X/wallpapers/debian_swirl_badwolf.svg ${HOME}/.wallpaper.png
 
 gentoo_wallpaper:
-	convert X/wallpapers/gentoo_logo_badwolf.svg ${HOME}/.wallpaper.png
+	$(IMAGE_MAGICK) X/wallpapers/gentoo_logo_badwolf.svg ${HOME}/.wallpaper.png
 
 update:
 	mkdir -p vim/bundle
