@@ -20,8 +20,6 @@ setopt NO_BEEP
 # Report statistics for every command taking over 2 seconds
 TIMEFMT="$fg_bold[white]%J$reset_color, time: $fg_bold[red]%*Es$reset_color, cpu: $fg_bold[red]%P$reset_color, mem: $fg_bold[red]%Mmb$reset_color"
 REPORTTIME=2
-# Correct commands
-setopt correctall
 
 #
 # History
