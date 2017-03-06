@@ -1,43 +1,21 @@
 IMAGE_MAGICK=convert
 DIR :=$(shell pwd)
 
-.PHONY: install help apt_install bash zsh vim tmux X update
+.PHONY: all help bash zsh vim tmux X debian_wallpaper freebsd_wallpaper gentoo_wallpaper update
 
-install: bash tmux
+all: zsh tmux X debian_wallpaper
 
 help:
 	@echo "Please use one of the following:"
-	@echo "  apt_install            install all dependencies, requires root"
-	@echo "  install                combines bash, tmux & vim"
 	@echo "  bash                   install a symlink to this bashrc"
 	@echo "  zsh                    install a symlink to this zshrc"
 	@echo "  vim                    install a symlink to this vim configuration"
 	@echo "  tmux                   install a symlink to this tmux configuration"
 	@echo "  X                      install a symlink to this X/i3 configuration"
+	@echo "  debian_wallpaper       create a ~/.wallpaper.png for Debian"
+	@echo "  freebsd_wallpaper      create a ~/.wallpaper.png for Freebsd"
+	@echo "  gentoo_wallpaper       create a ~/.wallpaper.png for Gentoo"
 	@echo "  update                 update all external sources"
-
-bsd:
-	echo "zsh"
-	ln -sf $(.CURDIR)/zsh/zshrc ${HOME}/.zshrc
-	echo "vim"
-	ln -sf $(.CURDIR)/vim/vimrc ${HOME}/.vimrc
-	mkdir -p ${HOME}/.vim
-	ln -sF $(.CURDIR)/vim/autoload ${HOME}/.vim/autoload
-	ln -sF $(.CURDIR)/vim/bundle ${HOME}/.vim/bundle
-	ln -sF $(.CURDIR)/vim/ftplugin ${HOME}/.vim/ftplugin
-	ln -sF $(.CURDIR)/vim/spell ${HOME}/.vim/spell
-	vim -c ":e ${HOME}/.vim/spell/en.utf-8.add" -c ':silent mkspell! %' -c ':q'
-	vim -c ':Helptags' -c ':q'
-	mkdir -p ${HOME}/.config
-	ln -sf $(.CURDIR)/X/Xresources ${HOME}/.Xresources
-	ln -sF $(.CURDIR)/X/i3 ${HOME}/.i3
-	ln -sF $(.CURDIR)/X/i3status ${HOME}/.i3status
-	$(IMAGE_MAGICK) X/wallpapers/freebsd_orb_badwolf.svg ${HOME}/.wallpaper.png
-
-
-
-apt_install:
-	DEBIAN_FRONTEND=noninteractive apt-get -yq install bash tmux
 
 bash:
 	ln -sf $(DIR)/bash/bashrc ${HOME}/.bashrc
@@ -84,3 +62,21 @@ update:
 	wget -q https://raw.githubusercontent.com/Bash-it/bash-it/master/completion/available/pip.completion.bash -O bash/completion/pip.completion.bash
 	wget -q https://raw.githubusercontent.com/Bash-it/bash-it/master/completion/available/tmux.completion.bash -O bash/completion/tmux.completion.bash
 	wget -q https://raw.githubusercontent.com/Bash-it/bash-it/master/completion/available/apm.completion.bash -O bash/completion/apm.completion.bash
+
+# bsd:
+# 	echo "zsh"
+# 	ln -sf $(.CURDIR)/zsh/zshrc ${HOME}/.zshrc
+# 	echo "vim"
+# 	ln -sf $(.CURDIR)/vim/vimrc ${HOME}/.vimrc
+# 	mkdir -p ${HOME}/.vim
+# 	ln -sF $(.CURDIR)/vim/autoload ${HOME}/.vim/autoload
+# 	ln -sF $(.CURDIR)/vim/bundle ${HOME}/.vim/bundle
+# 	ln -sF $(.CURDIR)/vim/ftplugin ${HOME}/.vim/ftplugin
+# 	ln -sF $(.CURDIR)/vim/spell ${HOME}/.vim/spell
+# 	vim -c ":e ${HOME}/.vim/spell/en.utf-8.add" -c ':silent mkspell! %' -c ':q'
+# 	vim -c ':Helptags' -c ':q'
+# 	mkdir -p ${HOME}/.config
+# 	ln -sf $(.CURDIR)/X/Xresources ${HOME}/.Xresources
+# 	ln -sF $(.CURDIR)/X/i3 ${HOME}/.i3
+# 	ln -sF $(.CURDIR)/X/i3status ${HOME}/.i3status
+# 	$(IMAGE_MAGICK) X/wallpapers/freebsd_orb_badwolf.svg ${HOME}/.wallpaper.png
