@@ -94,13 +94,6 @@ virtualenv_info() {
 }
 
 #
-# Add syntax highlighting if installed
-#
-if [ -e /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-	. /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-
-#
 # Define all precmd's
 #
 precmd() {
@@ -143,4 +136,13 @@ fi
 # RUST: Support user cargo installs
 if [ -d $HOME/.cargo/bin ]; then
 	PATH+=":$HOME/.cargo/bin"
+fi
+
+#
+# Add syntax highlighting if installed
+#
+if [ -e /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+	source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+elif [ -e $HOME/.zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+	source $HOME/.zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi

@@ -23,6 +23,7 @@ bash:
 
 zsh:
 	ln -sf $(DIR)/zsh/zshrc ${HOME}/.zshrc
+	ln -sfn $(DIR)/zsh/plugins ${HOME}/.zsh-plugins
 
 vim:
 	ln -sf $(DIR)/vim/vimrc ${HOME}/.vimrc

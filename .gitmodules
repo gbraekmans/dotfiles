@@ -34,3 +34,6 @@
 [submodule "vim/bundle/badwolf"]
 	path = vim/bundle/badwolf
 	url = https://github.com/gbraekmans/badwolf
+[submodule "zsh/plugins/zsh-syntax-highlighting"]
+	path = zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
