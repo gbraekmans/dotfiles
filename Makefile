@@ -46,6 +46,7 @@ X:
 	ln -sf $(DIR)/X/Xresources ${HOME}/.Xresources
 	ln -sfn $(DIR)/X/i3 ${HOME}/.config/i3
 	ln -sfn $(DIR)/X/i3status ${HOME}/.config/i3status
+	chmod +x ${HOME}/.config/i3/xdg_dmenu.py
 
 debian_wallpaper:
 	$(IMAGE_MAGICK) X/wallpapers/debian_swirl_badwolf.svg ${HOME}/.wallpaper.png
