@@ -3,7 +3,7 @@ DIR :=$(shell pwd)
 
 .PHONY: all help bash zsh vim tmux X debian_wallpaper freebsd_wallpaper gentoo_wallpaper update
 
-all: zsh tmux X debian_wallpaper
+all: zsh tmux vim X debian_wallpaper
 
 help:
 	@echo "Please use one of the following:"
