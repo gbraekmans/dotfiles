@@ -71,7 +71,7 @@ set $WS6 "6. Graphics"
 set $WS7 "7. Misc"
 set $WS8 "8. Misc"
 set $WS9 "9. Misc"
-set $WS10 "10. Misc"
+set $WS10 "10. IRC"
 
 # switch to workspace
 bindsym $mod+1 workspace $WS1
@@ -183,6 +183,8 @@ assign [class="^Caja$"] $WS5
 
 assign [class="^Gimp"] $WS6
 assign [class="^Inkscape$"] $WS6
+
+assign [class="^Hexchat$"] $WS10
 
 # Last catch all
 assign [class=".*"] $WS1
