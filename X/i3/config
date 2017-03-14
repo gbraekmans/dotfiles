@@ -173,7 +173,7 @@ client.unfocused        $gravel $gravel $blackestgravel $gravel    $gravel
 for_window [class=".*"] border pixel 1
 
 # Workspace assignments
-assign [class="^Firefox$"] $WS2
+assign [class="^Firefox"] $WS2
 
 assign [class="^URxvt$"] $WS3
 
