@@ -127,9 +127,6 @@ mode "Resize" {
 
 bindsym $mod+r mode "Resize"
 
-# Switch to next workspace
-bindsym $mod+space workspace next
-
 # blackgravel is 141413
 # Define the colors
 set $taffy #ff2c4b

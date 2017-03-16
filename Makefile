@@ -46,6 +46,7 @@ X:
 	ln -sf $(DIR)/X/Xresources ${HOME}/.Xresources
 	ln -sfn $(DIR)/X/i3 ${HOME}/.config/i3
 	ln -sfn $(DIR)/X/i3status ${HOME}/.config/i3status
+	ln -sfn $(DIR)/X/dunst ${HOME}/.config/dunst
 	chmod +x ${HOME}/.config/i3/xdg_dmenu.py
 	mkdir -p ${HOME}/.local/share
 	rm -rf ${HOME}/.local/share/applications

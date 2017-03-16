@@ -1,0 +1,34 @@
+[global]
+    allow_markup = yes
+    font = "DejaVu Sans Monospace 10"
+    format = "<b>%a: %s</b>\n%b"
+    geometry = "300x300-20-40"
+    alignment = center
+    show_age_threshold = 60
+    separator_height = 2
+    padding = 10
+    separator_color = frame
+
+[frame]
+    width = 2
+    color = "#1c1b1a"
+
+[shortcuts]
+    close = mod4+space
+    close_all = mod4+shift+space
+    history = mod4+m
+
+[urgency_low]
+    background = "#fade3e" # Dalespale
+    foreground = "#1c1b1a" # Blackgravel
+    timeout = 30
+
+[urgency_normal]
+    background = "#0a9dff" # Tardis
+    foreground = "#1c1b1a" # Blackgravel
+    timeout = 45
+
+[urgency_critical]
+    background = "#ff2c4b" # Taffy
+    foreground = "#1c1b1a" # Blackgravel
+    timeout = 0
