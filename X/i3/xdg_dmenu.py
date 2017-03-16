@@ -59,7 +59,8 @@ def parse(desktop_file, debug_enabled):
         if debug_enabled:
             eprint('NO EXECUTABLE: ' + desktop_file)
         return None
-    return {application.getName(): executable.split(' ')[0]}
+    return {application.getName(): [part for part in executable.split(' ')
+                                    if not part.startswith('%')]}
 
 
 def desktop_file_identifier(desktop_file):

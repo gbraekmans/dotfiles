@@ -47,6 +47,9 @@ X:
 	ln -sfn $(DIR)/X/i3 ${HOME}/.config/i3
 	ln -sfn $(DIR)/X/i3status ${HOME}/.config/i3status
 	chmod +x ${HOME}/.config/i3/xdg_dmenu.py
+	mkdir -p ${HOME}/.local/share
+	rm -rf ${HOME}/.local/share/applications
+	ln -sfn $(DIR)/X/applications ${HOME}/.local/share/
 
 debian_wallpaper:
 	$(IMAGE_MAGICK) X/wallpapers/debian_swirl_badwolf.svg ${HOME}/.wallpaper.png

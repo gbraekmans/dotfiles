@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Weechat IRC Client
+GenericName=IRC Client
+Exec=urxvt -name weechat -e weechat
+Terminal=false
+Type=Application
+Categories=Network;IRCClient;
+StartupNotify=true
+MimeType=text/plain;
