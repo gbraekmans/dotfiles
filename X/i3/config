@@ -211,3 +211,4 @@ assign [class=".*"] $WS1
 for_window [class=".*"] focus
 
 exec_always --no-startup-id feh --bg-scale $HOME/.wallpaper.png
+exec_always --no-startup-id numlockx on

@@ -22,3 +22,4 @@ make
 ## TODO
 
 - On vim 8  upgrade test the new yaml-syntax and if good delete vim-yaml
+- On stretch uncomment the colors for binding modes in i3-config
