@@ -108,24 +108,39 @@ bindsym $mod+Shift+p exec "i3-nagbar -t warning -m 'Do you really want to power 
 
 # resize window (you can also use the mouse for that)
 mode "Resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        bindsym Shift+h resize shrink width 1 px or 1 ppt
-        bindsym Shift+j resize grow height 1 px or 1 ppt
-        bindsym Shift+k resize shrink height 1 px or 1 ppt
-        bindsym Shift+l resize grow width 1 px or 1 ppt
+    bindsym Shift+h resize shrink width 1 px or 1 ppt
+    bindsym Shift+j resize grow height 1 px or 1 ppt
+    bindsym Shift+k resize shrink height 1 px or 1 ppt
+    bindsym Shift+l resize grow width 1 px or 1 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "Resize"
+
+mode "Media" {
+    bindsym v exec --no-startup-id pactl set-sink-volume 0 -- +5% && killall -SIGUSR1 i3status
+    bindsym Shift+v exec --no-startup-id pactl set-sink-volume 0 -- -5% && killall -SIGUSR1 i3status
+
+    bindsym m exec --no-startup-id pactl set-sink-mute 0 toggle && killall -SIGUSR1 i3status
+
+    bindsym b exec xbacklight -inc 10 # increase screen brightness
+    bindsym Shift+b exec xbacklight -dec 10 # decrease screen brightness
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+m mode "Media"
 
 # blackgravel is 141413
 # Define the colors
