@@ -25,7 +25,7 @@ bindsym $mod+e exec gvim
 # Start browser
 bindsym $mod+b exec firefox
 # Start filemanager
-bindsym $mod+f exec caja
+bindsym $mod+f exec thunar
 
 # change focus
 bindsym $mod+h focus left
@@ -195,6 +195,7 @@ assign [class="^URxvt$"] $WS3
 assign [class="^Gvim$"] $WS4
 
 assign [class="^Caja$"] $WS5
+assign [class="^Thunar$"] $WS5
 
 assign [class="^Gimp"] $WS6
 assign [class="^Inkscape$"] $WS6
