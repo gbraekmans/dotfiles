@@ -51,6 +51,8 @@ X:
 	mkdir -p ${HOME}/.local/share
 	rm -rf ${HOME}/.local/share/applications
 	ln -sfn $(DIR)/X/applications ${HOME}/.local/share/
+	rm -rf ${HOME}/.config/zathura
+	ln -sfn $(DIR)/X/zathura ${HOME}/.config/zathura
 
 debian_wallpaper:
 	$(IMAGE_MAGICK) X/wallpapers/debian_swirl_badwolf.svg ${HOME}/.wallpaper.png

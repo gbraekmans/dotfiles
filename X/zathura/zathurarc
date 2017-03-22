@@ -1,0 +1,6 @@
+set page-padding 24
+set adjust-open "width"
+
+set recolor-lightcolor "#151515" #00
+set recolor-darkcolor "#E0E0E0" #06
+set recolor "true"

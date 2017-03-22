@@ -68,7 +68,7 @@ set $WS3 "3. Terminal"
 set $WS4 "4. Editor"
 set $WS5 "5. Files"
 set $WS6 "6. Graphics"
-set $WS7 "7. Misc"
+set $WS7 "7. Documents"
 set $WS8 "8. Misc"
 set $WS9 "9. Misc"
 set $WS10 "10. IRC"
@@ -198,6 +198,9 @@ assign [class="^Caja$"] $WS5
 
 assign [class="^Gimp"] $WS6
 assign [class="^Inkscape$"] $WS6
+
+assign [class="^Atril$"] $WS7
+assign [class="^Zathura$"] $WS7
 
 assign [class="^Hexchat$"] $WS10
 
