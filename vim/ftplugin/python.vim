@@ -4,9 +4,9 @@ let python_highlight_all = 1                 " Proper .py syntax highlighting
 highlight BadWhitespace ctermbg=red guibg=red
 
 function! TrimWhitespace()
-    let l:save = winsaveview()
-    %s/\s\+$//e
-    call winrestview(l:save)
+	let l:save = winsaveview()
+	%s/\s\+$//e
+	call winrestview(l:save)
 endfun
 
 " PEP-8 config
@@ -26,7 +26,10 @@ nnoremap <buffer> <localleader>C ?^\s*class ?e+1<CR>
 nnoremap <buffer> <localleader>d /^\s*def /e+1<CR>
 nnoremap <buffer> <localleader>D ?^\s*def ?e+1<CR>
 
-" " Autocommands
-" autocmd BufWritePost <buffer> call TrimWhitespace()
-" autocmd BufWritePre <buffer> call flake8#Flake8()
-" autocmd BufRead,BufNewFile <buffer> match BadWhitespace /\s\+$/
+" Autocommands
+augroup filetype_python
+	autocmd!
+	autocmd BufWritePost <buffer> call TrimWhitespace()
+	autocmd BufWritePre <buffer> call flake8#Flake8()
+	autocmd BufRead,BufNewFile <buffer> match BadWhitespace /\s\+$/
+augroup END
