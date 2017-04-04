@@ -27,10 +27,11 @@ set shiftwidth=2                             " same for indent
 
 " Multiple file handling
 set confirm                                  " Ask for save instead of error
+set autowrite                                " Save on buffer switch
 
 " Avoid the press enter to continue prompts
 set shortmess=aoOtI
-set cmdheight=2
+set cmdheight=1
 
 " Set up splits
 set splitbelow
@@ -86,7 +87,9 @@ if (has('gui_running'))
 		noremap <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
 	endif
 endif
+
 " Custom mappings
+
 " Shortcut for saving
 nnoremap <leader>w :w<CR>
 " Find current word under cursor in project
@@ -95,13 +98,22 @@ nnoremap <leader>f :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 nnoremap <leader>d :bdel<CR> 
 " Add a bunch of files
 nnoremap <leader>a :argadd **/
+" Open the projects folder
+nnoremap <leader>p :CtrlpProject<CR>
+" Open the buffer list
+nnoremap <leader>b :CtrlPBuffer<CR>
+" CtrlP mappings
+let g:ctrlp_map='<leader>e'
+
 " Splits
-nnoremap <leader>s :bprev<CR>:split<CR>:bnext<CR>
-nnoremap <leader>v :bprev<CR>:vertical split<CR>:bnext<CR>
-" Split movement toggle
-nnoremap <leader><leader> <C-w>w
-" Make this split the only window
-nnoremap <leader>o :only<CR>
+" Split Horizontal
+nnoremap <leader>sh :bprev<CR>:split<CR>:bnext<CR>
+" Split Vertical
+nnoremap <leader>sv :bprev<CR>:vertical split<CR>:bnext<CR>
+" Split Switch
+nnoremap <leader>ss <C-w>w
+" Split only
+nnoremap <leader>so :only<CR>
 " Make bindings
 nnoremap <leader>mm :make<CR>
 nnoremap <leader>mc :make clean<CR>
@@ -113,15 +125,6 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gl :Glog<CR>:cw<CR>
 nnoremap <leader>ga :Git add .<CR><CR>
 nnoremap <leader>gp :Gpush<CR>
-" Open the projects folder
-nnoremap <leader>p :CtrlpProject<CR>
-" Open the buffer list
-nnoremap <leader>b :CtrlPBuffer<CR>
-
-" CtrlP mappings
-let g:ctrlp_map='<leader>e'
-" Prevent the command line window from popping up
-nmap q: :q
 
 " Insert mode escape by jj
 inoremap jj <ESC>

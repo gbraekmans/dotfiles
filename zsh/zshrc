@@ -76,11 +76,12 @@ PROMPT+=' %(?.%F{green}✔.%F{red}✖)%f'
 # Show the $ or # sign if user or root
 PROMPT+=' %(!.#.\$) '
 
-# Show the status of the last command, green for succes, red for failure
+# Show the exit code in red if not zero
 RPROMPT+='%(?.. %B%F{red}%?%f%b)'
 
 virtualenv_info() {
 	if [ -z "$VIRTUAL_ENV" ]; then
+		VIRTUAL_ENV_NAME=""
 		return 0
 	fi
 	# Assume the name is the same is the last directory
@@ -88,8 +89,8 @@ virtualenv_info() {
 	# If it's a common name, use the parent's directory name
 	case "${VIRTUAL_ENV_NAME}" in
 		virtualenv|virtual_env|env|venv)
-        VIRTUAL_ENV_NAME=${VIRTUAL_ENV%/*};
-        VIRTUAL_ENV_NAME=${VIRTUAL_ENV_NAME##*/};
+			VIRTUAL_ENV_NAME=${VIRTUAL_ENV%/*};
+			VIRTUAL_ENV_NAME=${VIRTUAL_ENV_NAME##*/};
 	esac
 }
 
@@ -101,7 +102,7 @@ precmd() {
 	virtualenv_info
 	case ${TERM} in
 		[aEkx]term*|rxvt*|gnome*|konsole*|interix)
-      print -Pn "\e]0;zsh %~\a"
+			print -Pn "\e]0;zsh %~\a"
 			;;
 	esac
 }
@@ -109,7 +110,7 @@ precmd() {
 preexec() {
 	case ${TERM} in
 		[aEkx]term*|rxvt*|gnome*|konsole*|interix)
-      printf "\033]0;%s\a" "$1"
+			printf "\033]0;%s\a" "$1"
 			;;
 	esac
 }
